@@ -60,14 +60,14 @@ export default function Courses() {
     ]
 
     return (
-        <div className="mt-[50px] md:mt-[100px] flex flex-col gap-y-[40px] md:gap-y-[60px] xl:gap-y-[80px]">
+        <div className="mt-[50px] md:mt-[100px] flex flex-col gap-y-[40px] md:gap-y-[60px] lg:gap-y-[80px]">
             <div className="flex flex-col md:flex-row gap-y-5 md:gap-y-0 md:gap-x-[250px] lg:gap-x-[300px]">
                 <div className="md:w-3/4">
                     <h1 className="font-semibold text-[28px] md:text-[38px] lg:text-[48px]">Our Courses</h1>
                     <p className="text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">Explore our diverse range of math courses designed to enhance your skills and confidence.</p>
                 </div>
                 <div className="md:w-1/4 flex items-start md:justify-end md:items-end">
-                    <Button variant={"outline"} className="w-[96px] xl:w-[120px] h-[49px] xl:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">
+                    <Button variant={"outline"} className="w-[96px] lg:w-[120px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">
                         <Link href="/courses">See All</Link>
                     </Button>
                 </div>
@@ -79,7 +79,7 @@ export default function Courses() {
                             <img src={course.images.length > 0 ? course.images[0] : "/placeholder.png"} alt={course.title} className="max-h-[500px] rounded-[10px]" />
                         </div>
                         <div className="w-full flex items-center">
-                            <div className="flex flex-col lg:flex-row w-full justify-between lg:items-center gap-y-3 xl:gap-y-0">
+                            <div className="flex flex-col lg:flex-row w-full justify-between lg:items-center gap-y-3 lg:gap-y-0">
                                 <div className="flex gap-x-2">
                                     <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">{course.time}</Button>
                                     <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">{course.level}</Button>
@@ -93,7 +93,7 @@ export default function Courses() {
                             <h2 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px]">{course.title}</h2>
                             <p className="text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">{course.description}</p>
                         </div>
-                        <Button variant={"outline"} className="h-[49px] xl:h-[63px] px-6 py-[14px] md:py-[18px] cursor-pointer bg-[rgba(247,247,248,0.5)] hover:bg-[rgba(247,247,248)]">
+                        <Button variant={"outline"} className="h-[49px] lg:h-[63px] px-6 py-[14px] md:py-[18px] cursor-pointer bg-[rgba(247,247,248,0.5)] hover:bg-[rgba(247,247,248)]">
                             <span className="text-[16px] md:text-[18px] lg:text-[20px] font-medium">Start Course</span>
                         </Button>
                     </li>

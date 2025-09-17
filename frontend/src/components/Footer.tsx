@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react"
+import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -6,14 +7,14 @@ export default function Footer() {
             <div className="pt-[50px] md:pt-[60px] flex flex-col gap-y-[20px] md:gap-y-[50px] rounded-[10px]">
                 <div className="flex flex-col mt-2 gap-y-6 md:gap-y-0 md:flex-row md:gap-x-[100px] lg:gap-x-[260px] xl:gap-x-[385px] max-w-[1596px]">
                     <div className="flex flex-col gap-y-[30px] md:gap-y-10">
-                        <div className="cursor-pointer size-[60px] flex items-center justify-center bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] rounded-[8px]">
+                        <Link href="/" className="cursor-pointer size-[60px] flex items-center justify-center bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] rounded-[8px]">
                             <img src="/icon.png" alt="Logo" className="size-[40px]" />
-                        </div>
+                        </Link>
                         <ul className="flex flex-col gap-y-5 text-[18px]">
                             <li className="flex">
                                 <Mail size={24} className="mr-3" />
                                 <p className="text-[18px] md:text-[20px]">
-                                    hello@skillbridge.com
+                                    support@mathmaze.com
                                 </p>
                             </li>
                             <li className="flex">
@@ -68,7 +69,7 @@ export default function Footer() {
                 </div>
                 <hr className="border-[#f1f1f3]" />
                 <div>
-                    <p className="text-[18px] text-[#a1a1a1] text-center">© 2025 Skillbridge. All rights reserved.</p>
+                    <p className="text-[18px] text-[#a1a1a1] text-center">© 2025 MathMaze. All rights reserved.</p>
                 </div>
             </div>
         </div>

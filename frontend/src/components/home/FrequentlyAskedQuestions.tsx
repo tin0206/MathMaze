@@ -48,7 +48,7 @@ export default function FrequentlyAskedQuestions() {
                     <h1 className="font-semibold text-[28px] md:text-[38px] lg:text-[48px]">Frequently Asked Questions</h1>
                     <p className="mt-[10px] text-[14px] md:text-[16px] lg:text-[18px] text-[#333333]">Still you have any questions? Contact our Team via support@skillbridge.com</p>
                 </div>
-                <Button variant={"outline"} className="w-[130px] lg:w-[164px] h-[49px] xl:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">See All FAQ’s</Button>
+                <Button variant={"outline"} className="w-[130px] lg:w-[164px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">See All FAQ’s</Button>
             </div>
             <ul className="flex flex-col gap-y-[20px] md:gap-y-[30px]">
                 {faqs.map((faq) => (

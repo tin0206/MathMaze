@@ -13,9 +13,9 @@ export default function Navbar() {
       <div className="hidden md:block">
         <div className="flex items-center justify-between h-[99px] max-w-[1860px] border-[#f1f1f3] border-b-2 bg-[rgba(247,247,248,0.2)] rounded-[10px]">
           <div className="flex md:h-[45px] lg:h-[55px] md:gap-x-[20px] lg:gap-x-[50px] items-center">
-            <div className="cursor-pointer size-[60px] flex items-center justify-center bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] rounded-[8px]">
+            <Link href="/" className="cursor-pointer size-[60px] flex items-center justify-center bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] rounded-[8px]">
               <img src="/icon.png" alt="Logo" className="size-[40px]" />
-            </div>
+            </Link>
             <ul className="flex items-center gap-x-4 md:h-[45px] lg:h-[55px]">
               <Link href="/" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 Home
@@ -23,12 +23,12 @@ export default function Navbar() {
               <Link href="/courses" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 Courses
               </Link>
-              <li className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
+              <Link href="/about" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 About Us
-              </li>
-              <li className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
+              </Link>
+              <Link href="/contact" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 Contact
-              </li>
+              </Link>
             </ul>
           </div>
           <div className="flex gap-x-[30px] md:h-[45px] lg:h-[55px] items-center">

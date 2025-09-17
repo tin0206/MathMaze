@@ -132,7 +132,7 @@ export default function Courses() {
                             </div>
                         )}
                         <div className="w-full flex items-center">
-                            <div className="flex flex-col md:flex-row w-full justify-between md:items-center gap-y-3 xl:gap-y-0">
+                            <div className="flex flex-col md:flex-row w-full justify-between md:items-center gap-y-3 md:gap-y-0">
                                 <div className="flex gap-x-2">
                                     <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">{course.time}</Button>
                                     <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">{course.level}</Button>

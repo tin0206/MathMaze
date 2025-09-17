@@ -43,17 +43,17 @@ export default function Benefits() {
                 <p className=" text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">Learning math isn't just about numbers — it's about sharpening your mind and gaining tools that apply to almost every part of life.</p>
             </div>
             <div className="md:w-1/4 flex items-start md:justify-end md:items-end">
-                <Button variant={"outline"} className="w-[96px] xl:w-[120px] h-[49px] xl:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">View All</Button>
+                <Button variant={"outline"} className="w-[96px] lg:w-[120px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">View All</Button>
             </div>
         </div>
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-5">
             {benefits.map((benefit) => (
-                <li key={benefit.id} className="flex flex-col bg-[#ffffff] rounded-[10px] gap-y-[30px] md:gap-y-10 xl:gap-y-[50px] p-[30px] md:p-10 xl:p-[50px]">
+                <li key={benefit.id} className="flex flex-col bg-[#ffffff] rounded-[10px] gap-y-[30px] md:gap-y-10 lg:gap-y-[50px] p-[30px] md:p-10 lg:p-[50px]">
                     <div className="w-full flex justify-end">
-                        <h2 className="font-bold text-[50px] md:text-[60px] xl:text-[80px]">{`0${benefit.id}`}</h2>
+                        <h2 className="font-bold text-[50px] md:text-[60px] lg:text-[80px]">{`0${benefit.id}`}</h2>
                     </div>
                     <div className="h-2/3">
-                        <h3 className="font-semibold text-[18px] xl:text-[20px] mb-1">{benefit.title}</h3>
+                        <h3 className="font-semibold text-[18px] lg:text-[20px] mb-1">{benefit.title}</h3>
                         <p className="text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">{benefit.description}</p>
                     </div>
                     <div className="w-full flex justify-end">
