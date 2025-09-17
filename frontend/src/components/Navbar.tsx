@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "./ui/button"
 import { Menu } from "lucide-react"
+import Link from 'next/link'
 
 export default function Navbar() {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -16,12 +17,12 @@ export default function Navbar() {
               <img src="/icon.png" alt="Logo" className="size-[40px]" />
             </div>
             <ul className="flex items-center gap-x-4 md:h-[45px] lg:h-[55px]">
-              <li className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
+              <Link href="/" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 Home
-              </li>
-              <li className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
+              </Link>
+              <Link href="/courses" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 Courses
-              </li>
+              </Link>
               <li className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 About Us
               </li>
