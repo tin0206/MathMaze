@@ -60,7 +60,7 @@ export default function FrequentlyAskedQuestions() {
                                 onClick={() => setOpenFAQ(openFAQ === faq.id ? null : faq.id)}
                             >
                                 <span className="text-[14px] md:text-[16px] lg:text-[18px] font-medium">
-                                    {openFAQ === faq.id ? "−" : "+"}
+                                    {openFAQ === faq.id ? "-" : "+"}
                                 </span>
                             </Button>
                         </div>

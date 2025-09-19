@@ -1,63 +1,11 @@
+"use client"
+
+import { useCourses } from "@/store/useCourses"
 import { Button } from "../ui/button"
 import Link from 'next/link'
 
 export default function Courses() {
-    const courses = [
-        {
-            id: 1,
-            title: "Arithmetic Foundations",
-            author: "John Smith",
-            description: "Learn the building blocks of mathematics. This course covers numbers, operations, fractions, decimals, and percentages through simple explanations and practical examples. Perfect for beginners who want to strengthen their core math skills.",
-            images: [],
-            time: "25 hours",
-            level: "Beginner",
-        },
-        {
-            id: 2,
-            title: "Geometry Basics",
-            author: "Jane Doe",
-            description: "Discover the shapes and structures of the world around us. From angles and triangles to circles and 3D solids, this course builds spatial reasoning and problem-solving skills with visual, interactive lessons.",
-            images: [],
-            time: "18 hours",
-            level: "Beginner",
-        },
-        {
-            id: 3,
-            title: "Algebra I",
-            author: "Emily Johnson",
-            description: "Transition from numbers to symbols. This course teaches you how to work with variables, solve equations, draw graphs, and understand functions—the foundation of higher mathematics and computer science.",
-            images: [],
-            time: "33 hours",
-            level: "Intermediate",
-        },
-        {
-            id: 4,
-            title: "Calculus I",
-            author: "Michael Brown",
-            description: "Understand change and motion through limits, derivatives, and integrals. This course connects algebra and geometry to real-world applications like physics, economics, and biology.",
-            images: [],
-            time: "33 hours",
-            level: "Upper Intermediate",
-        },
-        {
-            id: 5,
-            title: "Probability & Statistics",
-            author: "Sarah Wilson",
-            description: "Explore the world of data analysis and interpretation. This course covers key concepts in probability, descriptive statistics, and inferential statistics, equipping you with the skills to make data-driven decisions.",
-            images: [],
-            time: "40 hours",
-            level: "Advanced",
-        },
-        {
-            id: 6,
-            title: "Number Theory",
-            author: "David Lee",
-            description: "Dive into the properties and relationships of numbers. This course covers prime numbers, divisibility, modular arithmetic, and more, providing a strong foundation for cryptography and advanced mathematical studies.",
-            images: [],
-            time: "30 hours",
-            level: "Optional Advanced",
-        }
-    ]
+    const { courses } = useCourses()
 
     return (
         <div className="mt-[50px] md:mt-[100px] flex flex-col gap-y-[40px] md:gap-y-[60px] lg:gap-y-[80px]">
@@ -93,8 +41,10 @@ export default function Courses() {
                             <h2 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px]">{course.title}</h2>
                             <p className="text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">{course.description}</p>
                         </div>
-                        <Button variant={"outline"} className="h-[49px] lg:h-[63px] px-6 py-[14px] md:py-[18px] cursor-pointer bg-[rgba(247,247,248,0.5)] hover:bg-[rgba(247,247,248)]">
-                            <span className="text-[16px] md:text-[18px] lg:text-[20px] font-medium">Start Course</span>
+                        <Button asChild variant={"outline"} className="h-[49px] lg:h-[63px] px-6 py-[14px] md:py-[18px] cursor-pointer bg-[rgba(247,247,248,0.5)] hover:bg-[rgba(247,247,248)]">
+                            <Link href={`/course/${course.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                                View Course
+                            </Link>
                         </Button>
                     </li>
                 ))}
