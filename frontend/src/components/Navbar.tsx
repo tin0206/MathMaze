@@ -33,10 +33,10 @@ export default function Navbar() {
           </div>
           <div className="flex gap-x-[30px] md:h-[45px] lg:h-[55px] items-center">
             <Button variant="outline" className="w-[100px] text-[22px] cursor-pointer hover:bg-[rgba(255,149,0,0.1)]">
-              Sign Up
+              <Link href="/signup">Sign Up</Link>
             </Button>
             <Button variant="outline" className="w-[117px] bg-[rgba(255,149,0,1)] text-white text-[22px] cursor-pointer hover:text-white hover:bg-[rgba(255,149,0,0.8)]">
-              Login
+              <Link href="/login">Login</Link>
             </Button>
           </div>
         </div>
