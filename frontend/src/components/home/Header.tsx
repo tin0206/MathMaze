@@ -21,9 +21,8 @@ export default function Header() {
         <p className='text-[24px] md:text-[28px] lg:text-[38px] font-medium'>with Online Design and Development Courses.</p>
         <p className='w-full flex items-center justify-center text-[14px] md:text-[16px] lg:text-[18px]'>Learn from Industry Experts and Enhance Your Skills.</p>
       </div>
-      <div className='mt-[50px] flex gap-x-3 lg:mt-[60px] w-[293px] lg:w-[366px] h-[49px] lg:h-[63px]'>
+      <div className='mt-[50px] flex justify-center lg:mt-[60px] w-[293px] lg:w-[366px] h-[49px] lg:h-[63px]'>
         <Button className='h-full w-[154px] lg:w-[195px] cursor-pointer bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] text-white font-semibold text-[16px] rounded-[6px] px-5 py-[14px]'>Explore Courses</Button>
-        <Button variant={'outline'} className='h-full w-[127px] lg:w-[159px] cursor-pointer font-medium text-[18px] rounded-[6px] px-5 py-[14px]'>View Pricing</Button>
       </div>
       <div className="mt-[100px] flex items-center justify-center w-full rounded-[12px]">
         <img src="/top.webp" alt="Header Image" className='w-4/5 h-auto' />

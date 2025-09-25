@@ -96,6 +96,9 @@ export const useCourses = create<CourseState>((set, get) => ({
                     ]
                 },
             ],
+            language: ["English"],
+            price: 20,
+            updated_date: "01-10-2024",
         },
         {
             id: 2,
@@ -166,6 +169,9 @@ export const useCourses = create<CourseState>((set, get) => ({
                     ]
                 },
             ],
+            language: ["English"],
+            price: 20,
+            updated_date: "18-11-2025",
         },
         {
             id: 3,
@@ -247,6 +253,9 @@ export const useCourses = create<CourseState>((set, get) => ({
                     ]
                 },
             ],
+            language: ["English"],
+            price: 25,
+            updated_date: "15-12-2024",
         },
         {
             id: 4,
@@ -319,6 +328,9 @@ export const useCourses = create<CourseState>((set, get) => ({
                     ]
                 },
             ],
+            language: ["English"],
+            price: 30,
+            updated_date: "20-01-2025",
         },
         {
             id: 5,
@@ -387,6 +399,9 @@ export const useCourses = create<CourseState>((set, get) => ({
                     ]
                 },
             ],
+            language: ["English"],
+            price: 30,
+            updated_date: "10-03-2025",
         },
         {
             id: 6,
@@ -454,6 +469,9 @@ export const useCourses = create<CourseState>((set, get) => ({
                     ]
                 },
             ],
+            language: ["English"],
+            price: 25,
+            updated_date: "15-04-2025",
         }
     ],
     setCourses: (courses: Course[]) => set({ courses }),

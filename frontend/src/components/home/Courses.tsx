@@ -15,9 +15,11 @@ export default function Courses() {
                     <p className="text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">Explore our diverse range of math courses designed to enhance your skills and confidence.</p>
                 </div>
                 <div className="md:w-1/4 flex items-start md:justify-end md:items-end">
-                    <Button variant={"outline"} className="w-[96px] lg:w-[120px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">
-                        <Link href="/courses">See All</Link>
-                    </Button>
+                    <Link href="/courses" className="w-[96px]">
+                        <Button variant={"outline"} className="w-full lg:w-[120px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">
+                            See All
+                        </Button>
+                    </Link>
                 </div>
             </div>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-5 md:gap-x-[30px] md:gap-y-[30px]">

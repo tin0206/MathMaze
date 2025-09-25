@@ -1,3 +1,10 @@
+export type User = {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
+}
+
 export type Chapter = {
     title: string;
     content: string;
@@ -21,6 +28,9 @@ export type Course = {
     time: string;
     level: string;
     curriculum: Section[];
+    language: string[];
+    price: number;
+    updated_date: string;
 }
 
 export type Testimonial = {

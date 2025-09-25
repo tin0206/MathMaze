@@ -2,7 +2,7 @@
 
 import { useCourses } from "@/store/useCourses"
 import { Button } from "../ui/button"
-import { TvMinimalPlay, NotebookText, ScrollText, MoveDown, MoveUp } from 'lucide-react'
+import { TvMinimalPlay, NotebookText, ScrollText, MoveDown, MoveUp, Languages } from 'lucide-react'
 import { Chapter } from "@/app/model"
 import { useState } from "react"
 
@@ -41,14 +41,7 @@ export default function ContentContainer({ course_name }: ContentContainerProps)
                         <h2 className="md:w-2/5 text-[28px] md:text-[38px] lg:text-[48px] font-semibold leading-[34px] md:leading-[44px] lg:leading-[58px]">
                             {course?.title}
                         </h2>
-                         <div className="md:w-2/5 flex flex-col gap-y-4">
-                            <p className="text-[14px] ...">{course?.description}</p>
-                            <div className="w-full flex justify-center md:justify-end">
-                                <Button className="bg-[#FF9500] rounded-[10px] text-white hover:bg-[#e68500] cursor-pointer">
-                                    Start Learning
-                                </Button>
-                            </div>
-                        </div>
+                        <p className="md:w-2/5 text-[14px] ...">{course?.description}</p>
                     </div>
                     <div className="w-full flex flex-col gap-y-[20px] md:gap-y-[30px] lg:gap-y-[60px]">
                         <div className="w-full flex items-center justify-center">
@@ -57,9 +50,24 @@ export default function ContentContainer({ course_name }: ContentContainerProps)
                             </div>
                         </div>
                         <div className="w-full flex flex-col gap-y-5">
-                            <div className="flex gap-x-2">
-                                <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">{course?.level}</Button>
-                                <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">By {course?.author}</Button>
+                            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-3 md:gap-y-0">
+                                <div className="flex gap-x-2">
+                                    <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">{course?.level}</Button>
+                                    <Button variant={"outline"} className="text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">By {course?.author}</Button>
+                                </div>
+                                <Button variant={"outline"} className="max-w-[270px] text-[14px] text-[#656567] hover:text-[#656567] md:text-[16px] lg:text-[18px] px-[14px] md:px-4 py-2 md:py-[10px] rounded-[8px] hover:bg-[#ffffff]">Last updated: {course?.updated_date}</Button>
+                            </div>
+                            <div className="flex items-center gap-x-2">
+                                <h3 className="text-[18px] md:text-[20px] lg:text-[24px]">Price:</h3>
+                                <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-semibold">{course.price} $</h3>
+                            </div>
+                            <div className="flex items-center">
+                                <Button variant={"outline"} className="border-[#FF9500] text-[#FF9500] hover:bg-[rgba(255,149,0,0.1)] rounded-[10px] mr-4 cursor-pointer">
+                                    Add to Wishlist
+                                </Button>
+                                <Button className="bg-[#FF9500] rounded-[10px] text-white hover:bg-[#e68500] cursor-pointer">
+                                    Buy Now
+                                </Button>
                             </div>
                             <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-semibold">Course Overview</h3>
                             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-4 md:gap-y-0">
@@ -75,6 +83,10 @@ export default function ContentContainer({ course_name }: ContentContainerProps)
                                     <div className="flex gap-x-2">
                                         <ScrollText className="w-6 h-6 text-[#656567]" />
                                         <p className="text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">{course?.curriculum.reduce((sum, section) => sum + section.chapters.length, 0)} chapters</p>
+                                    </div>
+                                    <div className="flex gap-x-2">
+                                        <Languages className="w-6 h-6 text-[#656567]" />
+                                        <p className="text-[14px] text-[#656567] md:text-[16px] lg:text-[18px]">{course?.language.join(", ")}</p>
                                     </div>
                                 </div>
                                 <Button 

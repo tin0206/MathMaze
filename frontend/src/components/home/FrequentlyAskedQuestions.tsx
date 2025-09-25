@@ -42,15 +42,15 @@ export default function FrequentlyAskedQuestions() {
     ]
     
     return (
-        <div className="mt-[50px] md:mt-[100px] flex flex-col md:flex-row md:gap-x-[60px] lg:gap-x-[120px] p-[24px] bg-white rounded-[10px] mb-[50px] md:mb-[100px]">
-            <div className="w-2/5 max-w-[408px] flex flex-col gap-y-[20px] md:gap-y-[40px] lg:gap-y-[50px]">
+        <div className="mt-[50px] md:mt-[100px] flex flex-col md:flex-row md:gap-x-[60px] lg:gap-x-[120px] gap-y-8 md:gap-y-0 p-[24px] bg-white rounded-[10px] mb-[50px] md:mb-[100px]">
+            <div className="md:w-2/5 max-w-[408px] flex flex-col gap-y-[20px] md:gap-y-[40px] lg:gap-y-[50px]">
                 <div className="w-full">
                     <h1 className="font-semibold text-[28px] md:text-[38px] lg:text-[48px]">Frequently Asked Questions</h1>
                     <p className="mt-[10px] text-[14px] md:text-[16px] lg:text-[18px] text-[#333333]">Still you have any questions? Contact our Team via support@skillbridge.com</p>
                 </div>
                 <Button variant={"outline"} className="w-[130px] lg:w-[164px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">See All FAQ’s</Button>
             </div>
-            <ul className="flex flex-col gap-y-[20px] md:gap-y-[30px]">
+            <ul className="md:w-3/5 flex flex-col gap-y-[20px] md:gap-y-[30px]">
                 {faqs.map((faq) => (
                     <li key={faq.id} className="px-[24px] md:px-[40px] lg:px-[50px] py-[20px] md:py-[24px] lg:py-[30px] border-[0.5px] rounded-[12px] shadow-sm">
                         <div className="flex items-center justify-between w-full">
@@ -70,7 +70,7 @@ export default function FrequentlyAskedQuestions() {
                         {openFAQ === faq.id && (
                             <div className="mt-[20px] md:mt-[40px] lg:mt-[50px]">
                                 <p className="text-[#4c4c4d] text-[14px] md:text-[16px] lg:text-[18px]">{faq.answer}</p>
-                                <div className="mt-[20px] md:mt-[40px] lg:mt-[50px] rounded-[8px] flex bg-[#f7f7f8] px-[20px] md:px-[24px] lg:px-[30px] py-[12px] md:py-[16px] lg:py-[20px]">
+                                <div className="mt-[20px] md:mt-[40px] lg:mt-[50px] items-center rounded-[8px] flex bg-[#f7f7f8] px-[20px] md:px-[24px] lg:px-[30px] py-[12px] md:py-[16px] lg:py-[20px]">
                                     <p className="w-4/5 text-[14px] md:text-[16px] lg:text-[18px] text-[#656567]">
                                         {faq.title}
                                     </p>
