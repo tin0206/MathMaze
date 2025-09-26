@@ -27,5 +27,5 @@ model User {
   password  String
   role     Role      @default(STUDENT)
   createdAt DateTime @default(now())
-  refreshToken String?
+  refreshToken String? @db.Text
 }

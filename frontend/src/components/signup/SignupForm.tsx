@@ -7,8 +7,12 @@ import { Input } from "../ui/input";
 import { MoveUpRight } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import { useUser } from "@/store/useUser";
 
 export default function SignupForm() {
+    const { setUser } = useUser()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -66,6 +70,47 @@ export default function SignupForm() {
         }, 2000)
     }
 
+    interface GoogleAuthResponse {
+        message: string
+        id: number
+        name: string
+        email: string
+        role: string
+        accessToken: string
+        refreshToken: string
+    }
+    
+    const handleGoogleLogin = useGoogleLogin({
+        flow: "auth-code",
+        scope: "openid email profile",
+        onSuccess: async (tokenResponse) => {
+            try {
+                const res = await axios.post<GoogleAuthResponse>(
+                    `${process.env.NEXT_PUBLIC_API_URL}/auth/google`,
+                    { token: tokenResponse.code },
+                )
+
+                if (res.status === 200) {
+                    setUser({
+                        id: res.data.id,
+                        name: res.data.name,
+                        email: res.data.email,
+                        role: res.data.role
+                    })
+                    localStorage.setItem("accessToken", res.data.accessToken)
+                    localStorage.setItem("refreshToken", res.data.refreshToken)
+                }
+                router.push("/")
+
+            } catch (error) {
+                setError("Google login failed. Please try again.")
+            }
+        },
+        onError: () => {
+            setError("Google login failed. Please try again.")
+        }
+    })
+
     return (
         <div className="bg-white w-full justify-center p-[30px] md:p-[40px] lg:p-[50px] flex flex-col gap-y-[30px] md:gap-y-[40px] lg:gap-y-[50px] rounded-[10px]">
             <div className="flex flex-col justify-center items-center gap-y-[10px]">
@@ -118,10 +163,15 @@ export default function SignupForm() {
                     <hr className="w-2/3" />
                 </div>
                 <Button variant={"outline"} className="w-full h-[49px] lg:h-[63px]px-[20px] py-[14px] lg:py-[18px] cursor-pointer bg-[#f7f7f8] hover:bg-[rgba(241,241,243,1)]">
-                    <div className="flex items-center justify-center gap-x-3">
+                    <div className="flex items-center justify-center gap-x-3"
+                        onClick={() => {
+                            setError("")
+                            handleGoogleLogin()
+                        }}
+                    >
                         <img src="/google.png" alt="Google Icon" className="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[28px] lg:h-[28px]" />
                         <span className="text-[13px] md:text-[16px] lg:text-[18px] font-medium">
-                            Sign Up with Google
+                            Login with Google
                         </span>
                     </div>
                 </Button>

@@ -2,9 +2,16 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const { PrismaClient } = require('../generated/prisma')
+const { OAuth2Client } = require('google-auth-library')
 
 const prisma = new PrismaClient()
 const bcrypt = require('bcrypt')
+
+const client = new OAuth2Client(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_REDIRECT_URI
+)
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || "access_secret"
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || "refresh_secret"
@@ -57,16 +64,16 @@ router.post('/login', async (req, res) => {
         }
         const isValidPassword = await bcrypt.compare(password, user.password)
         if (!isValidPassword) {
-            return res.status(400).json({ message: "Invalid password" })
+            return res.status(400).json({ message: "Incorrect password" })
         }
 
         const accessToken = jwt.sign(
             { id: user.id, email: user.email, role: user.role }, 
             ACCESS_TOKEN_SECRET, 
-            { expiresIn: '2h' }
+            { expiresIn: '1h' }
         )
 
-        const refreshToken = jwt.sign(
+        const newRefreshToken = jwt.sign(
             { id: user.id, email: user.email, role: user.role }, 
             REFRESH_TOKEN_SECRET, 
             { expiresIn: '7d' }
@@ -74,7 +81,68 @@ router.post('/login', async (req, res) => {
 
         await prisma.user.update({
             where: { id: user.id },
-            data: { refreshToken }
+            data: { refreshToken: newRefreshToken }
+        })
+        
+        res.status(200).json({ 
+            message: "Login successful", 
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            accessToken: accessToken,
+            refreshToken: newRefreshToken
+        })
+    } catch (error) {
+        return res.status(500).json({ message: "Server error" })
+    }
+})
+
+// Google login route
+router.post('/google', async (req, res) => {
+    const { token: code } = req.body
+
+    try {
+        const { tokens } = await client.getToken(code)
+
+        const ticket = await client.verifyIdToken({
+            idToken: tokens.id_token,
+            audience: process.env.GOOGLE_CLIENT_ID
+        })
+
+        const payload = ticket.getPayload()
+        const { sub, email, name } = payload
+
+        let user = await prisma.user.findUnique({
+            where: { email }
+        })
+
+        if (!user) {
+            user = await prisma.user.create({
+                data: {
+                    name,
+                    email,
+                    password: sub,
+                    role: "STUDENT"
+                }
+            })
+        }
+
+        const accessToken = jwt.sign(
+            { id: user.id, email: user.email, role: user.role }, 
+            ACCESS_TOKEN_SECRET, 
+            { expiresIn: '1h' }
+        )
+
+        const newRefreshToken = jwt.sign(
+            { id: user.id, email: user.email, role: user.role }, 
+            REFRESH_TOKEN_SECRET, 
+            { expiresIn: '7d' }
+        )
+
+        await prisma.user.update({
+            where: { id: user.id },
+            data: { refreshToken: newRefreshToken }
         })
 
         res.status(200).json({ 
@@ -84,8 +152,9 @@ router.post('/login', async (req, res) => {
             email: user.email,
             role: user.role,
             accessToken: accessToken,
-            refreshToken: refreshToken
+            refreshToken: newRefreshToken
         })
+
     } catch (error) {
         return res.status(500).json({ message: "Server error" })
     }
@@ -131,6 +200,12 @@ router.get('/me', async (req, res) => {
             role: user.role
          })
     } catch (error) {
+        if (error.name === 'TokenExpiredError') {
+            return res.status(401).json({ message: "Token expired" })
+        }
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ message: "Invalid token" })
+        }
         return res.status(500).json({ message: "Server error" })
     }
 })
@@ -140,7 +215,7 @@ router.post('/refresh', async (req, res) => {
     const { refreshToken } = req.body
 
     try {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findFirst({
             where: { refreshToken }
         })
 
@@ -148,12 +223,12 @@ router.post('/refresh', async (req, res) => {
             return res.status(403).json({ message: "Invalid refresh token" })
         }
         
-        const decoded = jwt.verify(refreshToken, REFRESH_TOKEN_SECRET)
+        jwt.verify(refreshToken, REFRESH_TOKEN_SECRET)
 
         const accessToken = jwt.sign(
             { id: user.id, email: user.email, role: user.role },
             ACCESS_TOKEN_SECRET,
-            { expiresIn: "2h" }
+            { expiresIn: "1h" }
         )
 
         const newRefreshToken = jwt.sign(

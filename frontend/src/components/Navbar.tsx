@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import { Menu } from "lucide-react"
 import Link from 'next/link'
@@ -13,6 +13,10 @@ export default function Navbar() {
   const [showProfileMenu, setShowProfileMenu] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+
+  useEffect(() => {
+    setShowProfileMenu(false)
+  }, [user])
 
   const handleLogout = async () => {
     if (isLoading) return

@@ -4,6 +4,7 @@ import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import FetchData from "@/components/FetchData"
+import { GoogleOAuthProvider } from "@react-oauth/google"
 
 const beVietnamPro = Be_Vietnam_Pro({
   variable: "--font-be-vietnam-pro",
@@ -30,9 +31,11 @@ export default function RootLayout({
         <div className="w-full flex flex-col xl:items-center bg-[rgba(247,247,248,1)]">
           <div className="max-w-[1800px] w-full">
             <Navbar />
-            <div className="flex flex-col px-[20px] lg:px-[90px] xl:px-[132px]">
-              {children}
-            </div>
+            <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
+              <div className="flex flex-col px-[20px] lg:px-[90px] xl:px-[132px]">
+                {children}
+              </div>
+            </GoogleOAuthProvider>
           </div>
         </div>
         <div className="max-w-[1800px] w-full bg-white">

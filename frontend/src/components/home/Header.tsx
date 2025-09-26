@@ -24,8 +24,8 @@ export default function Header() {
       <div className='mt-[50px] flex justify-center lg:mt-[60px] w-[293px] lg:w-[366px] h-[49px] lg:h-[63px]'>
         <Button className='h-full w-[154px] lg:w-[195px] cursor-pointer bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] text-white font-semibold text-[16px] rounded-[6px] px-5 py-[14px]'>Explore Courses</Button>
       </div>
-      <div className="mt-[100px] flex items-center justify-center w-full rounded-[12px]">
-        <img src="/top.webp" alt="Header Image" className='w-4/5 h-auto' />
+      <div className="mt-[100px] flex items-center justify-center w-full">
+        <img src="/top.webp" alt="Header Image" className='w-4/5 h-auto rounded-[12px]' />
       </div>
     </div>
   )
