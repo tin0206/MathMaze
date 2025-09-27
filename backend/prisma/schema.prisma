@@ -28,4 +28,6 @@ model User {
   role     Role      @default(STUDENT)
   createdAt DateTime @default(now())
   refreshToken String? @db.Text
+  resetToken String? @db.Text
+  resetTokenExpiry DateTime?
 }

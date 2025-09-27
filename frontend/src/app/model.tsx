@@ -39,3 +39,11 @@ export type Testimonial = {
     feedback: string;
     image: string;
 }
+
+export type Notification = {
+    id: number;
+    type: "success" | "error" | "info" | "warning";
+    title: string;
+    message: string;
+    duration?: number;
+}

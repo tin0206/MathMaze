@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import FetchData from "@/components/FetchData"
 import { GoogleOAuthProvider } from "@react-oauth/google"
+import PopUpNoti from "@/components/PopUpNoti"
 
 const beVietnamPro = Be_Vietnam_Pro({
   variable: "--font-be-vietnam-pro",
@@ -36,6 +37,7 @@ export default function RootLayout({
                 {children}
               </div>
             </GoogleOAuthProvider>
+            <PopUpNoti />
           </div>
         </div>
         <div className="max-w-[1800px] w-full bg-white">

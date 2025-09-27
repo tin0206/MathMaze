@@ -6,6 +6,7 @@ const { OAuth2Client } = require('google-auth-library')
 
 const prisma = new PrismaClient()
 const bcrypt = require('bcrypt')
+const crypto = require('crypto')
 
 const client = new OAuth2Client(
     process.env.GOOGLE_CLIENT_ID,
@@ -250,6 +251,42 @@ router.post('/refresh', async (req, res) => {
     } catch (error) {
         return res.status(403).json({ message: "Expired or invalid refresh token" })
     }
+})
+
+router.post('/reset-password', async (req, res) => {
+    const { email, password, token } = req.body
+
+    try {
+        const user = await prisma.user.findUnique({
+            where: { email }
+        })
+
+        if (!user) {
+            return res.status(404).json({ message: 'Email not found' })
+        }
+
+        if (token && user.resetToken && user.resetTokenExpiry) {
+            const hashedToken = crypto.createHash('sha256').update(token).digest('hex')
+            if (hashedToken !== user.resetToken || user.resetTokenExpiry < new Date()) {
+                return res.status(400).json({ message: 'Invalid or expired token' })
+            }
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+        await prisma.user.update({
+            where: { email },
+            data: {
+                password: hashedPassword,
+                resetToken: null,
+                resetTokenExpiry: null
+            }
+        })
+
+        res.status(200).json({ message: 'Password reset successful' })
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' })
+    }
+
 })
 
 module.exports = router

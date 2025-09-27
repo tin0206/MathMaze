@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { Checkbox } from "../ui/checkbox";
 import { Input } from "../ui/input";
 import { MoveUpRight } from "lucide-react";
 import Link from "next/link";
@@ -14,7 +13,6 @@ import axios from "axios";
 export default function LoginForm() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [rememberMe, setRememberMe] = useState(false)
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const { setUser } = useUser()
@@ -121,6 +119,33 @@ export default function LoginForm() {
         }
     })
 
+    const handleForgotPassword = async () => {
+        setError("")
+        if (!email) {
+            setError("Please enter your email address.")
+            return
+        }
+
+        if (!checkValidity()) return
+        setIsLoading(true)
+        const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/email/forgot-password`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "email": email
+            })
+        })
+        if (!result.ok) {
+            setError("An error occurred. Please try again.")
+        }
+        setTimeout(() => {
+            setIsLoading(false)
+            setEmail("")
+        }, 2000)
+    }
+
     return (
         <div className="bg-white w-full justify-center p-[30px] md:p-[40px] lg:p-[50px] flex flex-col gap-y-[30px] md:gap-y-[40px] lg:gap-y-[50px] rounded-[10px]">
             <div className="flex flex-col justify-center items-center gap-y-[10px]">
@@ -136,13 +161,12 @@ export default function LoginForm() {
                     <label htmlFor="password" className="text-[14px] md:text-[16px] lg:text-[18px] font-medium">Password</label>
                     <Input id="password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter your Password" className="w-full h-[61px] md:h-[64px] lg:h-[75px] p-5 lg:p-6 rounded-[10px] border border-[#d1d1d1] focus:border-[#4a90e2] focus:ring-0 text-[14px] md:text-[16px] lg:text-[18px]" />
                     <div className="w-full flex justify-end">
-                        <p className="text-[14px] md:text-[16px] lg:text-[18px] text-[#59595a] hover:underline cursor-pointer">
+                        <p 
+                            className="text-[14px] md:text-[16px] lg:text-[18px] text-[#59595a] hover:underline cursor-pointer"
+                            onClick={handleForgotPassword}
+                        >
                             Forgot Password?
                         </p>
-                    </div>
-                    <div className="flex items-center gap-x-2">
-                        <Checkbox checked={rememberMe} onCheckedChange={(checked) => setRememberMe(!!checked)} className="size-6 lg:size-[30px] cursor-pointer" id="terms" />
-                        <label htmlFor="terms" className="text-[14px] md:text-[16px] lg:text-[18px] text-[#59595a]">Remember me</label>
                     </div>
                     <Button 
                         variant="outline" className="w-full h-[49px] lg:h-[63px] bg-[rgba(255,149,0,1)] text-white px-[20px] py-[14px] lg:py-[18px] cursor-pointer hover:text-white hover:bg-[rgba(255,149,0,0.8)]"

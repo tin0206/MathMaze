@@ -28,14 +28,26 @@ export default function SignupForm() {
             setError("Name must be at least 2 characters long.")
             return false
         }
+        if (name.length > 50) {
+            setError("Name must be less than 50 characters long.")
+            return false
+        }
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         if (!emailRegex.test(email)) {
             setError("Please enter a valid email address.")
             return false
         }
+        if (email.length > 100) {
+            setError("Email must be less than 100 characters long.")
+            return false
+        }
         const passwordRegex = /^[A-Za-z0-9]+$/
         if (!passwordRegex.test(password)) {
             setError("Password can only contain letters and numbers.")
+            return false
+        }
+        if (password.length > 20) {
+            setError("Password must be less than 20 characters long.")
             return false
         }
         return true
