@@ -36,7 +36,7 @@ export default function Benefits() {
     ]
 
   return (
-    <div className="mt-[120px] flex flex-col gap-y-[40px] md:gap-y-[60px] lg:gap-y-[80px]">
+    <div className="mt-[50px] md:mt-[100px] flex flex-col gap-y-[40px] md:gap-y-[60px] lg:gap-y-[80px]">
         <div className="flex flex-col md:flex-row gap-y-5 md:gap-y-0 md:gap-x-[250px] lg:gap-x-[300px]">
             <div className="md:w-3/4">
                 <h1 className="font-semibold text-[28px] md:text-[38px] lg:text-[48px]">Benefits</h1>

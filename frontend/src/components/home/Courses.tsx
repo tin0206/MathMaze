@@ -17,7 +17,7 @@ export default function Courses() {
                 <div className="md:w-1/4 flex items-start md:justify-end md:items-end">
                     <Link href="/courses" className="w-[96px]">
                         <Button variant={"outline"} className="w-full lg:w-[120px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">
-                            See All
+                            View All
                         </Button>
                     </Link>
                 </div>

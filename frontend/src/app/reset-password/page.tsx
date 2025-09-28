@@ -10,7 +10,7 @@ export default function page() {
   const email = searchParams.get("email")
 
   return (
-      <div className="flex flex-col md:flex-row gap-y-[50px] md:gap-y-0 md:gap-x-[50px] lg:gap-x-[100px] mt-[50px] lg:mt-[100px] mb-[50px] md:mb-[100px]">
+      <div className="flex flex-col md:flex-row gap-y-[50px] md:gap-y-0 md:gap-x-[50px] lg:gap-x-[100px] mt-[50px] lg:mt-[100px] mb-[50px] md:mb-[100px] px-[20px] lg:px-[90px] xl:px-[132px]">
         <div className="md:w-3/5 order-2 md:order-1 flex items-center justify-center">
           <StudentTestimonials />
         </div>

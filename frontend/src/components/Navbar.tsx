@@ -5,38 +5,32 @@ import { Button } from "./ui/button"
 import { Menu } from "lucide-react"
 import Link from 'next/link'
 import { useUser } from "@/store/useUser"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { useLogout } from "@/app/utils/auth"
 
 export default function Navbar() {
-  const { user, setUser } = useUser()
+  const { user } = useUser()
+  const logout = useLogout()
   const [showSidebar, setShowSidebar] = useState(false)
   const [showProfileMenu, setShowProfileMenu] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     setShowProfileMenu(false)
   }, [user])
 
+  if (pathname.includes('/instructor')) {
+    return null
+  }
+
   const handleLogout = async () => {
     if (isLoading) return
     setIsLoading(true)
-    const refreshToken = localStorage.getItem("refreshToken")
-    const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ refreshToken: refreshToken })
-    })
-    if (result.status === 500) {
-      console.error("Failed to logout")
-      return
-    }
 
-    localStorage.removeItem("accessToken")
-    localStorage.removeItem("refreshToken")
-    setUser(null)
+    await logout()
+
     setIsLoading(false)
     router.push("/")
   }
@@ -56,12 +50,13 @@ export default function Navbar() {
               <Link href="/courses" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
                 Courses
               </Link>
-              <Link href="/about" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
-                About Us
-              </Link>
-              <Link href="/contact" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
-                Contact
-              </Link>
+              {
+                user?.role === "TEACHER" && (
+                  <Link href="/instructor/courses" className="h-full flex items-center justify-center md:w-[100px] lg:w-[100px] md:text-[20px] lg:text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]">
+                    Instructor
+                  </Link>
+                )
+              }
             </ul>
           </div>
           {
@@ -91,7 +86,7 @@ export default function Navbar() {
                 {
                   showProfileMenu && (
                     <div 
-                      className="absolute top-[70px] right-0 w-[350px] bg-white rounded-[10px] shadow-lg flex flex-col items-start z-10"
+                      className="absolute top-[70px] right-0 w-[250px] bg-white rounded-[10px] shadow-lg flex flex-col items-start z-10"
                       onMouseLeave={() => setShowProfileMenu(false)}
                     >
                       <div className="w-full p-[10px] flex border-b">
@@ -148,8 +143,8 @@ export default function Navbar() {
       </div>
       <div className="md:hidden block relative">
         <div className="flex items-center justify-between h-[73px] border-[#f1f1f3] border-b-2 bg-[rgba(247,247,248,0.2)] rounded-[10px]">
-          <div className="cursor-pointer size-[60px] flex items-center justify-center bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] rounded-[8px]">
-            <img src="/icon.png" alt="Logo" className="size-[40px]" />
+          <div className="cursor-pointer size-[50px] flex items-center justify-center bg-[rgba(255,149,0,1)] hover:bg-[rgba(255,149,0,0.8)] rounded-[8px]">
+            <img src="/icon.png" alt="Logo" className="size-[30px]" />
           </div>
           <div className="flex gap-x-[30px] h-[45px] items-center">
             {
@@ -181,7 +176,7 @@ export default function Navbar() {
                       <>
                         <div>
                           <div 
-                            className="absolute top-[70px] right-[-80px] w-[350px] bg-white rounded-[10px] shadow-lg flex flex-col items-start z-10"
+                            className="absolute top-[70px] right-[-80px] w-[250px] bg-white rounded-[10px] shadow-lg flex flex-col items-start z-10"
                             onMouseLeave={() => setShowProfileMenu(false)}
                           >
                             <div className="w-full p-[10px] flex border-b">
@@ -271,30 +266,22 @@ export default function Navbar() {
                   >
                     Courses
                   </Link>
-                  <Link
-                    href="/about" className="h-[40px] flex items-center justify-center w-3/4 text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]" 
-                    onClick={(e) => {
-                      e.preventDefault()
-                      setShowSidebar(false)
-                      setTimeout(() => {
-                        router.push("/about")
-                      }, 300)
-                    }}
-                  >
-                    About Us
-                  </Link>
-                  <Link
-                    href="/contact" className="h-[40px] flex items-center justify-center w-3/4 text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]" 
-                    onClick={(e) => {
-                      e.preventDefault()
-                      setShowSidebar(false)
-                      setTimeout(() => {
-                        router.push("/contact")
-                      }, 300)
-                    }}
-                  >
-                    Contact
-                  </Link>
+                  {
+                    user?.role === "TEACHER" && (
+                      <Link
+                        href="/instructor/courses" className="h-[40px] flex items-center justify-center w-3/4 text-[22px] cursor-pointer hover:bg-[rgba(241,241,243,1)] hover:rounded-[8px]" 
+                        onClick={(e) => {
+                          e.preventDefault()
+                          setShowSidebar(false)
+                          setTimeout(() => {
+                            router.push("/instructor/courses")
+                          }, 300)
+                        }}
+                      >
+                        Instructor
+                      </Link>
+                    )
+                  }
                 </ul>
               </div>
             </div>

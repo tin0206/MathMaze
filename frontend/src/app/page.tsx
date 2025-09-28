@@ -6,7 +6,7 @@ import Testimonials from "@/components/home/Testimonials";
 
 export default function Home() {
   return (
-    <div>
+    <div className="px-[20px] lg:px-[90px] xl:px-[132px]">
       <Header />
       <Benefits />
       <Courses />

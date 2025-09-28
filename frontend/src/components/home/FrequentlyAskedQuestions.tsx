@@ -48,12 +48,12 @@ export default function FrequentlyAskedQuestions() {
                     <h1 className="font-semibold text-[28px] md:text-[38px] lg:text-[48px]">Frequently Asked Questions</h1>
                     <p className="mt-[10px] text-[14px] md:text-[16px] lg:text-[18px] text-[#333333]">Still you have any questions? Contact our Team via support@skillbridge.com</p>
                 </div>
-                <Button variant={"outline"} className="w-[130px] lg:w-[164px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">See All FAQ’s</Button>
+                <Button variant={"outline"} className="w-[130px] lg:w-[164px] h-[49px] lg:h-[63px] px-5 py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">View All FAQ's</Button>
             </div>
             <ul className="md:w-3/5 flex flex-col gap-y-[20px] md:gap-y-[30px]">
                 {faqs.map((faq) => (
                     <li key={faq.id} className="px-[24px] md:px-[40px] lg:px-[50px] py-[20px] md:py-[24px] lg:py-[30px] border-[0.5px] rounded-[12px] shadow-sm">
-                        <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center justify-between w-full mb-2">
                             <p className="font-medium text-[#262626] text-[16px] md:text-[18px] lg:text-[20px] w-4/5">{faq.question}</p>
                             <Button
                                 variant={"outline"} className="size-[40px] p-[10px] rounded-[8px] cursor-pointer bg-[rgba(255,244,230,1)] hover:bg-[rgba(255,244,230,0.8)]"

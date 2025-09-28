@@ -47,3 +47,11 @@ export type Notification = {
     message: string;
     duration?: number;
 }
+
+export type ResourceCreatingCourse = {
+    id: number;
+    title: string;
+    description: string;
+    link: string;
+    image: string;
+}

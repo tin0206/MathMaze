@@ -5,10 +5,14 @@ import JoinUs from "@/components/about/JoinUs";
 
 export default function page() {
   return (
-    <div>
+    <div className="px-[20px] lg:px-[90px] xl:px-[132px]">
         <Header />
-        <Achievements />
-        <Goals />
+        <div id="achievements">
+          <Achievements />
+        </div>
+        <div id="goals">
+          <Goals />
+        </div>
         <JoinUs />
     </div>
   )

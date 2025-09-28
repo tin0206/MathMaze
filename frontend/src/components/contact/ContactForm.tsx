@@ -70,13 +70,13 @@ export default function ContactForm() {
             <div className="w-full p-[30px] border flex flex-col items-center gap-y-[14px] lg:gap-y-[20px] bg-[rgba(252,252,253,1)] rounded-[8px]">
                 <div className="w-full flex justify-center">
                     <ul className="flex gap-x-[14px]">
-                        <li className="size-[44px] lg:size-[52px] bg-[#f7f7f8] border flex items-center justify-center rounded-[8px] cursor-pointer">
+                        <li className="size-[44px] xl:size-[52px] bg-[#f7f7f8] border flex items-center justify-center rounded-[8px] cursor-pointer">
                             <img src="/facebook.png" alt="" className="size-[20px]" />
                         </li>
-                        <li className="size-[44px] lg:size-[52px] bg-[#f7f7f8] border flex items-center justify-center rounded-[8px] cursor-pointer">
+                        <li className="size-[44px] xl:size-[52px] bg-[#f7f7f8] border flex items-center justify-center rounded-[8px] cursor-pointer">
                             <img src="/twitter.png" alt=""  className="size-[20px]"/>
                         </li>
-                        <li className="size-[44px] lg:size-[52px] bg-[#f7f7f8] border flex items-center justify-center rounded-[8px] cursor-pointer">
+                        <li className="size-[44px] xl:size-[52px] bg-[#f7f7f8] border flex items-center justify-center rounded-[8px] cursor-pointer">
                             <img src="/linkedin.png" alt="" className="size-[20px]" />
                         </li>
                     </ul>

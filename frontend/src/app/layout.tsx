@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
       <body
@@ -33,16 +33,14 @@ export default function RootLayout({
           <div className="max-w-[1800px] w-full">
             <Navbar />
             <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
-              <div className="flex flex-col px-[20px] lg:px-[90px] xl:px-[132px]">
+              <div>
                 {children}
               </div>
             </GoogleOAuthProvider>
             <PopUpNoti />
           </div>
         </div>
-        <div className="max-w-[1800px] w-full bg-white">
-          <Footer />
-        </div>
+        <Footer />
       </body>
     </html>
   )
