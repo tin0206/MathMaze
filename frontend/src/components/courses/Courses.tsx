@@ -12,16 +12,18 @@ export default function Courses() {
             {courses.map((course) => (
                 <div key={course.id} className="p-6 md:p-10 lg:p-[50px] flex flex-col gap-y-[40px] lg:gap-y-[50px] bg-white rounded-[10px]">
                     <div className="flex flex-col gap-y-6 lg:gap-y-[30px]">
-                        <div className="w-full flex flex-col md:flex-row md:gap-x-[50px] gap-y-[20px] md:gap-y-0 items-center">
+                        <div className="w-full flex flex-col md:flex-row md:gap-x-[50px] gap-y-[20px] md:gap-y-0 md:items-center">
                             <div>
                                 <h2 className="font-semibold text-[18px] md:text-[20px] lg:text-[24px]">{course.title}</h2>
                                 <p className="mt-1 text-[14px] md:text-[16px] lg:text-[18px] text-[#59595a]">{course.description}</p>
                             </div>
-                            <Button asChild variant={"outline"} className="w-[119px] lg:w-[160px] h-[49px] lg:h-[63px] px-[16px] py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">
-                                <Link href={`/course/${course.title.replace(/\s+/g, "-").toLowerCase()}`}>
-                                    View Course
-                                </Link>
-                            </Button>
+                            <div className="ml-auto">
+                                <Button asChild variant={"outline"} className="w-[119px] lg:w-[160px] h-[49px] lg:h-[63px] px-[16px] py-[14px] rounded-[8px] font-medium text-[18px] cursor-pointer">
+                                    <Link href={`/course/${course.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                                        View Course
+                                    </Link>
+                                </Button>
+                            </div>
                         </div>
                         {course.images.length > 0 ? (
                             <div className={`grid grid-cols-${course.images.length} gap-x-4`}>

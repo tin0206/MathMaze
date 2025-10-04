@@ -55,3 +55,8 @@ export type ResourceCreatingCourse = {
     link: string;
     image: string;
 }
+
+export type TimeOption = {
+    label: string;
+    value: number;
+}

@@ -2,8 +2,15 @@
 
 import { Mail, Phone, MapPin } from "lucide-react"
 import Link from 'next/link'
+import { usePathname } from "next/navigation"
 
 export default function Footer() {
+    const pathname = usePathname()
+
+    if (pathname.includes('/course/create')) {
+        return null
+    }
+
     return (
         <div className="px-[20px] lg:px-[90px] xl:px-[132px] pb-[50px] max-w-[1800px] w-full bg-white relative z-25">
             <div className="pt-[50px] md:pt-[60px] flex flex-col gap-y-[20px] md:gap-y-[50px] rounded-[10px]">

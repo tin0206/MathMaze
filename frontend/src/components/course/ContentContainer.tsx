@@ -1,17 +1,17 @@
 "use client"
 
-import { useCourses } from "@/store/useCourses"
 import { Button } from "../ui/button"
 import { TvMinimalPlay, NotebookText, ScrollText, MoveDown, MoveUp, Languages } from 'lucide-react'
 import { Chapter } from "@/app/model"
 import { useState } from "react"
+import { useCoursesStore } from "@/store/useCoursesStore"
 
 type ContentContainerProps = {
     course_name: string
 }
 
 export default function ContentContainer({ course_name }: ContentContainerProps) {
-    const { getCourseByName } = useCourses()
+    const { getCourseByName } = useCoursesStore()
     const course = getCourseByName(course_name)
     const [expanded, setExpanded] = useState(false)
     const paragraphs = course?.brief.split('\n\n')

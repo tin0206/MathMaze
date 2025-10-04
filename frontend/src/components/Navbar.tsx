@@ -21,7 +21,7 @@ export default function Navbar() {
     setShowProfileMenu(false)
   }, [user])
 
-  if (pathname.includes('/instructor')) {
+  if (pathname.includes('/instructor') || pathname.includes('/course/create')) {
     return null
   }
 
