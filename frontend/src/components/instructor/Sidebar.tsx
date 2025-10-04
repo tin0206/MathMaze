@@ -6,6 +6,9 @@ import { usePathname } from 'next/navigation'
 
 export default function Sidebar() {
     const pathname = usePathname()
+    if (!pathname.startsWith('/instructor')) {
+        return null
+    }
     
     return (
         <>

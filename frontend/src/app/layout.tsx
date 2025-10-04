@@ -6,6 +6,7 @@ import Footer from "@/components/Footer"
 import FetchData from "@/components/FetchData"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import PopUpNoti from "@/components/PopUpNoti"
+import Sidebar from "@/components/instructor/Sidebar"
 
 const beVietnamPro = Be_Vietnam_Pro({
   variable: "--font-be-vietnam-pro",
@@ -29,15 +30,18 @@ export default function RootLayout({
         className={`${beVietnamPro.variable} antialiased flex flex-col xl:items-center`}
       >
         <FetchData />
-        <div className="w-full flex flex-col xl:items-center bg-[rgba(247,247,248,1)]">
-          <div className="max-w-[1800px] w-full">
-            <Navbar />
-            <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
-              <div>
-                {children}
-              </div>
-            </GoogleOAuthProvider>
-            <PopUpNoti />
+        <div className="w-full flex flex-col md:flex-row">
+          <Sidebar />
+          <div className="w-full flex flex-col xl:items-center bg-[rgba(247,247,248,1)]">
+            <div className="max-w-[1800px] w-full">
+              <Navbar />
+              <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
+                <div>
+                  {children}
+                </div>
+              </GoogleOAuthProvider>
+              <PopUpNoti />
+            </div>
           </div>
         </div>
         <Footer />
