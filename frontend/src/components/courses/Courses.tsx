@@ -1,11 +1,11 @@
 "use client"
 
-import { useCourses } from "@/store/useCourses"
+import { useCoursesStore } from "@/store/useCoursesStore"
 import { Button } from "../ui/button"
 import Link from "next/link"
 
 export default function Courses() {
-    const { courses } = useCourses()
+    const { courses } = useCoursesStore()
 
     return (
         <div className="mt-[50px] md:mt-[100px] flex flex-col gap-y-[20px] md:gap-y-[40px] lg:gap-y-[50px] mb-[50px] md:mb-[100px]">

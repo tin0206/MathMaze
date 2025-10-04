@@ -4,12 +4,12 @@ import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import { Menu } from "lucide-react"
 import Link from 'next/link'
-import { useUser } from "@/store/useUser"
+import { useUserStore } from "@/store/useUserStore"
 import { usePathname, useRouter } from "next/navigation"
 import { useLogout } from "@/app/utils/auth"
 
 export default function Navbar() {
-  const { user } = useUser()
+  const { user } = useUserStore()
   const logout = useLogout()
   const [showSidebar, setShowSidebar] = useState(false)
   const [showProfileMenu, setShowProfileMenu] = useState(false)

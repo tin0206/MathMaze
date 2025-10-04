@@ -1,10 +1,10 @@
 "use client"
 
-import { useTestimonials } from "@/store/useTestimonials";
+import { useTestimonialsStore } from "@/store/useTestimonialsStore";
 import { Button } from "../ui/button";
 
 export default function Testimonials() {
-  const { testimonials } = useTestimonials()
+  const { testimonials } = useTestimonialsStore()
 
   return (
     <div className="mt-[50px] md:mt-[100px] flex flex-col gap-y-[40px] md:gap-y-[60px] lg:gap-y-[80px]">

@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { MoveUpRight } from "lucide-react";
 import Link from "next/link";
-import { useUser } from "@/store/useUser";
+import { useUserStore } from "@/store/useUserStore";
 import { useRouter } from "next/navigation";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
@@ -15,7 +15,7 @@ export default function LoginForm() {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
-    const { setUser } = useUser()
+    const { setUser } = useUserStore()
     const router = useRouter()
 
     const checkValidity = () => {

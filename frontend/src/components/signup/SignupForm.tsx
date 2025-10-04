@@ -9,10 +9,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { useUser } from "@/store/useUser";
+import { useUserStore } from "@/store/useUserStore";
 
 export default function SignupForm() {
-    const { setUser } = useUser()
+    const { setUser } = useUserStore()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

@@ -1,12 +1,12 @@
 "use client"
 
-import { useTestimonials } from "@/store/useTestimonials";
+import { useTestimonialsStore } from "@/store/useTestimonialsStore";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 export default function StudentTestimonials() {
-    const { testimonials } = useTestimonials()
+    const { testimonials } = useTestimonialsStore()
     const [indexOfTestimonial, setIndexOfTestimonial] = useState<number>(0)
 
     return (

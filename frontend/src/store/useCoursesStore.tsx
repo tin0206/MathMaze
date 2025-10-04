@@ -7,7 +7,7 @@ interface CourseState {
     getCourseByName: (name: string) => Course | undefined
 }
 
-export const useCourses = create<CourseState>((set, get) => ({
+export const useCoursesStore = create<CourseState>((set, get) => ({
     courses: [
         {
             id: 1,

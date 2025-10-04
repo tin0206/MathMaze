@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
-import { useNotification } from "@/store/useNotification";
+import { useNotificationStore } from "@/store/useNotificationStore";
 
 type ResetPasswordFormProps = {
     token: string | null
@@ -17,7 +17,7 @@ export default function ResetPasswordForm({ token, email }: ResetPasswordFormPro
     const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
-    const { setNotification } = useNotification()
+    const { setNotification } = useNotificationStore()
     const router = useRouter()
 
     const checkValidity = () => {

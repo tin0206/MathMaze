@@ -1,7 +1,7 @@
-import { useUser } from "@/store/useUser"
+import { useUserStore } from "@/store/useUserStore"
 
 export function useLogout() {
-  const { setUser } = useUser()
+  const { setUser } = useUserStore()
 
   const logout = async () => {
     const refreshToken = localStorage.getItem("refreshToken")

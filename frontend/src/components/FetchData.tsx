@@ -1,10 +1,10 @@
 "use client"
 
-import { useUser } from "@/store/useUser"
+import { useUserStore } from "@/store/useUserStore"
 import { useEffect } from "react"
 
 export default function FetchData() {
-    const { setUser } = useUser()
+    const { setUser } = useUserStore()
 
     useEffect(() => {
         const loadUser = async () => {

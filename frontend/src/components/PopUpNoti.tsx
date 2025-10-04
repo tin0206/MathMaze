@@ -1,11 +1,11 @@
 "use client"
 
-import { useNotification } from '@/store/useNotification'
+import { useNotificationStore } from '@/store/useNotificationStore'
 import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 
 export default function PopUpNoti() {
-    const { notification, setNotification } = useNotification()
+    const { notification, setNotification } = useNotificationStore()
     const [show, setShow] = useState(false)
 
     useEffect(() => {

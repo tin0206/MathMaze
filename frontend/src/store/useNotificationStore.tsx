@@ -6,7 +6,7 @@ interface NotificationState {
     setNotification: (notification: Notification | null) => void;
 }
 
-export const useNotification = create<NotificationState>((set) => ({
+export const useNotificationStore = create<NotificationState>((set) => ({
     notification: null,
     setNotification: (notification) => set({ notification })
 }));

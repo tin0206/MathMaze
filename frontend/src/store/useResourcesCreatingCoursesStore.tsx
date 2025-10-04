@@ -6,7 +6,7 @@ interface ResourcesCreatingCoursesState {
     setResources: (resources: ResourceCreatingCourse[]) => void
 }
 
-export const useResourcesCreatingCourses = create<ResourcesCreatingCoursesState>((set) => ({
+export const useResourcesCreatingCoursesStore = create<ResourcesCreatingCoursesState>((set) => ({
     resources: [
         {
             id: 1,

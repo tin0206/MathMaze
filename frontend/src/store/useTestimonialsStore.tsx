@@ -6,7 +6,7 @@ interface TestimonialState {
     setTestimonials: (testimonials: Testimonial[]) => void;
 }
 
-export const useTestimonials = create<TestimonialState>((set) => ({
+export const useTestimonialsStore = create<TestimonialState>((set) => ({
     testimonials: [
         {
             id: 1,

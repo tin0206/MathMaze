@@ -1,12 +1,12 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { useResourcesCreatingCourses } from "@/store/useResourcesCreatingCourses"
+import { useResourcesCreatingCoursesStore } from "@/store/useResourcesCreatingCoursesStore"
 import { useState } from "react"
 
 export default function Content() {
     const [option, setOption] = useState<"course" | "bundle">("course")
-    const { resources } = useResourcesCreatingCourses()
+    const { resources } = useResourcesCreatingCoursesStore()
 
     return (
         <div className="mt-[5px] md:mt-[10px] px-[10px] md:px-[24px] lg:px-[48px] flex flex-col gap-y-[50px] md:gap-y-[70px] mb-[50px] md:mb-[100px]">

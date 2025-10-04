@@ -4,8 +4,8 @@ import { Mail, Phone, MapPin } from "lucide-react"
 import Link from 'next/link'
 
 export default function Footer() {
-  return (
-        <div className="px-[20px] lg:px-[90px] xl:px-[132px] pb-[50px] max-w-[1800px] w-full bg-white">
+    return (
+        <div className="px-[20px] lg:px-[90px] xl:px-[132px] pb-[50px] max-w-[1800px] w-full bg-white relative z-25">
             <div className="pt-[50px] md:pt-[60px] flex flex-col gap-y-[20px] md:gap-y-[50px] rounded-[10px]">
                 <div className="flex flex-col mt-2 gap-y-6 md:gap-y-0 md:flex-row md:gap-x-[50px] lg:gap-x-[40px] xl:gap-x-[200px] max-w-[1596px]">
                     <div className="flex flex-col gap-y-[30px] md:gap-y-10">
@@ -81,5 +81,5 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-  )
+    )
 }

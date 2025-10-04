@@ -1,6 +1,6 @@
 "use client"
 
-import { useUser } from '@/store/useUser'
+import { useUserStore } from '@/store/useUserStore'
 import { useState } from 'react'
 import { Bell } from 'lucide-react'
 import { useRouter } from 'next/navigation'
@@ -8,7 +8,7 @@ import { useLogout } from '@/app/utils/auth'
 
 
 export default function Header() {
-    const { user } = useUser()
+    const { user } = useUserStore()
     const logout = useLogout()
     const [isLoading, setIsLoading] = useState(false)
     const [showProfileMenu, setShowProfileMenu] = useState(false)
